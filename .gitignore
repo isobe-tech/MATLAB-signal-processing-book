@@ -15,7 +15,9 @@ bib/
 latexmkrc
 Makefile
 kaizen.md
-figs/
+figs/*
+!figs/Title.png
+!figs/Back.png
 *.synctex*
 *.aux
 *.bbl
