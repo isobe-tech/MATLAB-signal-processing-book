@@ -1,36 +1,84 @@
-# MATLABによる信号処理入門（仮） — サンプルコード
+# Understanding Signal Processing with MATLAB
+# MATLABで理解する信号処理 ― 周波数解析とフィルタのはじめ方
 
 <p align="center">
   <img src="figs/Title.png" width="320" alt="cover (front)" />
 </p>
 
-このリポジトリは、書籍『MATLABによる信号処理入門』（仮題）の**配布コード**をまとめたものです。  
-本書では「式 → 実装（コード） → 図で確認 → 数値（誤差）で確認」という往復で、信号処理の基礎を腹落ちさせることを狙っています。
+Companion code for the book *Understanding Signal Processing with MATLAB --- Introduction to Frequency Analysis and Filters*.
 
-## 特徴
-- **Signal Processing Toolbox なし**で動くことを基本方針にしています（`fft`/`ifft`/`filter` などMATLAB標準関数中心）。
-- 各章のスクリプトは原則として **Run All で図まで再現**できるようにしています。
-- 再利用コードは `src/sp_*.m` として整理し、章スクリプトから呼び出します。
-- 図の出力は `exportgraphics` を基本にし、`figs/` に保存します（生成図は基本的にGit管理しません）。
+本書籍『MATLABで理解する信号処理 ― 周波数解析とフィルタのはじめ方』の配布コードです。
 
-## 使い方（最短）
-1. このリポジトリをクローン
-   - HTTPS: `git clone https://github.com/isobe-tech/MATLAB-signal-processing-book.git`
-   - SSH: `git clone git@github.com:isobe-tech/MATLAB-signal-processing-book.git`
-2. MATLABでリポジトリ直下を Current Folder に設定
-3. 章スクリプトを実行（例：第1章）
-   - `run(fullfile("chapters","ch01_environment.m"))`
+The book builds understanding through a tight loop of **equation → implementation → visualization → numerical verification**.
 
-各章スクリプトは内部で `src/` を `addpath` し、図の出力先 `figs/` が無ければ作成します。
+> **Note:** The book manuscript (LaTeX/PDF) is not included in this repository.
 
-## ディレクトリ構成
-- `chapters/`：章ごとの実験スクリプト（`.m`、図の生成まで含む）
-- `src/`：共通関数（`sp_` 接頭辞）
-- `project/`：総合プロジェクト
-  - `project/ch10_final_project.m`：最終プロジェクト（章の総まとめ）
-- `figs/`：表紙画像＋（ローカルで生成される）図の保存先
-  - GitHubに含めているのは `figs/Title.png` と `figs/Back.png` のみです
+## Features
 
-## 推奨MATLABバージョン
-- **R2017a以降**（スクリプト内で string（`"..."`）を使用しているため）
+- **No Signal Processing Toolbox required** --- uses only standard MATLAB functions (`fft`, `ifft`, `filter`, `conv`, etc.).
+- Each chapter script reproduces **all figures via Run All**.
+- Reusable functions are organized as `src/sp_*.m` and called from chapter scripts.
+- Figures are exported with `exportgraphics` to `figs/`.
 
+## Quick Start
+
+1. Clone this repository:
+   ```
+   git clone https://github.com/isobe-tech/MATLAB-signal-processing-book.git
+   ```
+2. Set the repository root as MATLAB's **Current Folder**.
+3. Run a chapter script (e.g., Chapter 1):
+   ```matlab
+   run(fullfile("chapters", "ch01_environment.m"))
+   ```
+
+Each script automatically adds `src/` to the path and creates `figs/` if needed.
+
+## Directory Structure
+
+| Path | Contents |
+|------|----------|
+| `chapters/` | Per-chapter experiment scripts |
+| `src/` | Shared utility functions (`sp_` prefix, 30 files) |
+| `project/` | Capstone project (`ch10_final_project.m`) |
+| `figs/` | Figure output (only cover images are tracked in Git) |
+
+## Chapter Guide
+
+| Script | Topic |
+|--------|-------|
+| `ch01_environment.m` | MATLAB environment, vectors, complex numbers |
+| `ch02_sampling_quantization.m` | Sampling theorem, quantization, dB |
+| `ch03_complex_phase.m` | Complex exponentials, phase, inner products |
+| `ch04_lti_convolution.m` | LTI systems, convolution, Toeplitz matrix |
+| `ch05_freq_response_dtft.m` | Frequency response, DTFT |
+| `ch06_dft_fft.m` | DFT, FFT, Parseval's theorem |
+| `ch07_window_psd.m` | Window functions, PSD estimation |
+| `ch08_stft.m` | Short-time Fourier transform, spectrogram |
+| `ch09_z_iir.m` | Z-transform, poles/zeros, IIR filters |
+| `ch10_fir_design.m` | FIR filter design (window method), capstone project |
+
+## Shared Functions (`src/`)
+
+| Function | Purpose |
+|----------|---------|
+| `sp_dft.m` / `sp_dft_matrix.m` | DFT from definition; DFT matrix |
+| `sp_convolve.m` / `sp_convmtx_toeplitz.m` | Convolution; Toeplitz convolution matrix |
+| `sp_fft_axis.m` / `sp_time_axis.m` | Frequency / time axis generation |
+| `sp_freq_response.m` / `sp_group_delay.m` | Frequency response; group delay |
+| `sp_stft.m` / `sp_psd_avg.m` | STFT; averaged PSD (Welch-style) |
+| `sp_fir_window_design.m` / `sp_fir_ls_lpf.m` | FIR design: window method / least squares |
+| `sp_window_rect.m` / `sp_window_hann.m` / `sp_window_hamming.m` | Window functions |
+| `sp_iir1.m` / `sp_iir2.m` | First / second-order IIR filters |
+| `sp_zplane_plot.m` | Pole-zero plot |
+| `sp_book_style.m` | Consistent figure styling |
+
+## Requirements
+
+**MATLAB R2017a or later** (uses double-quote string syntax `"..."`).
+
+## Covers
+
+| Front | Back |
+|-------|------|
+| <img src="figs/Title.png" width="240" alt="cover front" /> | <img src="figs/Back.png" width="240" alt="cover back" /> |
