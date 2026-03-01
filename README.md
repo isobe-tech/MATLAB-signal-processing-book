@@ -1,10 +1,6 @@
 # Understanding Signal Processing with MATLAB
 # MATLABで理解する信号処理 ― 周波数解析とフィルタのはじめ方
 
-<p align="center">
-  <img src="figs/Title.png" width="320" alt="cover (front)" />
-</p>
-
 Companion code for the book *Understanding Signal Processing with MATLAB --- Introduction to Frequency Analysis and Filters*.
 
 本書籍『MATLABで理解する信号処理 ― 周波数解析とフィルタのはじめ方』の配布コードです。
@@ -77,8 +73,3 @@ Each script automatically adds `src/` to the path and creates `figs/` if needed.
 
 **MATLAB R2017a or later** (uses double-quote string syntax `"..."`).
 
-## Covers
-
-| Front | Back |
-|-------|------|
-| <img src="figs/Title.png" width="240" alt="cover front" /> | <img src="figs/Back.png" width="240" alt="cover back" /> |
