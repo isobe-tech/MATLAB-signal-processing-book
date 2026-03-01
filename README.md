@@ -14,7 +14,7 @@ The book builds understanding through a tight loop of **equation → implementat
 - **No Signal Processing Toolbox required** --- uses only standard MATLAB functions (`fft`, `ifft`, `filter`, `conv`, etc.).
 - Each chapter script reproduces **all figures via Run All**.
 - Reusable functions are organized as `src/sp_*.m` and called from chapter scripts.
-- Figures are exported with `exportgraphics` to `figs/`.
+- Figures are exported with `exportgraphics` to a local `figs/` directory (auto-created).
 
 ## Quick Start
 
@@ -34,10 +34,8 @@ Each script automatically adds `src/` to the path and creates `figs/` if needed.
 
 | Path | Contents |
 |------|----------|
-| `chapters/` | Per-chapter experiment scripts |
+| `chapters/` | Per-chapter experiment scripts + capstone project |
 | `src/` | Shared utility functions (`sp_` prefix, 30 files) |
-| `project/` | Capstone project (`ch10_final_project.m`) |
-| `figs/` | Figure output (only cover images are tracked in Git) |
 
 ## Chapter Guide
 
